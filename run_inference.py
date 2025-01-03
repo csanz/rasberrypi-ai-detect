@@ -2,17 +2,32 @@ import tflite_runtime.interpreter as tflite
 import numpy as np
 from PIL import Image
 import sys
+import os
 
 # Check if image path is provided
 if len(sys.argv) != 2:
     print("Usage: python3 run_inference.py <image_path>")
     sys.exit(1)
 
+# Get the directory where the script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Load the image path from command-line argument
 image_path = sys.argv[1]
 
+# Define paths relative to script location
+model_path = os.path.join(script_dir, "models", "mobilenet_v2.tflite")
+labels_path = os.path.join(script_dir, "models", "mobilenet_v2.txt")
+
+# Verify files exist
+if not os.path.exists(model_path):
+    print(f"Error: Model file not found at {model_path}")
+    sys.exit(1)
+if not os.path.exists(labels_path):
+    print(f"Error: Labels file not found at {labels_path}")
+    sys.exit(1)
+
 # Load the TFLite model
-model_path = "/home/csanz/models/mobilenet_v2.tflite"  # Adjust path if needed
 interpreter = tflite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 
@@ -21,7 +36,6 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # Load labels
-labels_path = "/home/csanz/models/imagenet_labels.txt"  # Adjust path if needed
 with open(labels_path, "r") as f:
     labels = [line.strip() for line in f.readlines()]
 

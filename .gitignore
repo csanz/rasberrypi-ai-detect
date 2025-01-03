@@ -1,3 +1,11 @@
+# Neural Network Models
+*.h5
+*.hdf5
+*.pb
+*.tflite
+models/
+weights/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -168,4 +176,8 @@ cython_debug/
 #.idea/
 
 # PyPI configuration file
+<<<<<<< HEAD
 .pypirc
+=======
+.pypirc
+>>>>>>> 74399475cfa9570b3d15b68cfddd54508213cf8f
