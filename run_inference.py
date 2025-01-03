@@ -3,21 +3,20 @@ import numpy as np
 from PIL import Image
 import sys
 import os
+from pathlib import Path
 
 # Check if image path is provided
 if len(sys.argv) != 2:
     print("Usage: python3 run_inference.py <image_path>")
     sys.exit(1)
 
-# Get the directory where the script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
+# Define paths relative to current directory
+MODEL_DIR = "./models"
+model_path = os.path.join(MODEL_DIR, "mobilenet_v2.tflite")
+labels_path = os.path.join(MODEL_DIR, "mobilenet_v2.txt")
 
 # Load the image path from command-line argument
 image_path = sys.argv[1]
-
-# Define paths relative to script location
-model_path = os.path.join(script_dir, "models", "mobilenet_v2.tflite")
-labels_path = os.path.join(script_dir, "models", "mobilenet_v2.txt")
 
 # Verify files exist
 if not os.path.exists(model_path):
