@@ -33,6 +33,10 @@ Run inference on an image:
 python3 run_inference.py path/to/your/image.jpg
 ```
 
+### Example Output
+
+![Example Output](example/results.png)
+
 ## License
 
 GPL-3.0 license 
