@@ -35,4 +35,4 @@ python3 run_inference.py path/to/your/image.jpg
 
 ## License
 
-GPL-3.0 license
+GPL-3.0 license 

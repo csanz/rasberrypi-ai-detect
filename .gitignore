@@ -3,7 +3,6 @@
 *.hdf5
 *.pb
 *.tflite
-models/
 weights/
 
 # Byte-compiled / optimized / DLL files
